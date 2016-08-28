@@ -6,43 +6,15 @@ import React from 'react';
 export default class NavBar extends React.Component {
 	constructor(props) {
 		super(props);
-
-		// ES7 function bind proposal (https://github.com/zenparsing/es-function-bind)
-		this.onOver = ::this.onOver;
-		this.onOut = ::this.onOut;
-
-	}
-
-	componentWillMount() {
-		this.state = this.state || {};
-		this.state.hovered = false;
 	}
 
 	getImageDomNode() {
 		return React.findDOMNode(this.refs.image);
 	}
 
-	componentDidMount() {
-		this.getImageDomNode().addEventListener("mouseover", this.onOver);
-		this.getImageDomNode().addEventListener("mouseout", this.onOut);
-	}
-
-	componentWillUnmount() {
-		this.getImageDomNode().removeEventListener("mouseover", this.onOver);
-		this.getImageDomNode().removeEventListener("mouseout", this.onOut);
-	}
-
-	onOver() {
-		this.setState({ hovered: true });
-	}
-
-	onOut() {
-		this.setState({ hovered: false });
-	}
-
 	render() {
 		return (
-			<img src={this.state.hovered?this.props.hoverImage:this.props.image}
+			<img src={this.props.image}
 					 onClick={this.props.onClick}
 					 ref='image'
 				/>
