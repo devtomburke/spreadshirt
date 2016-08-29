@@ -6,9 +6,9 @@ export default class CardImage extends React.Component {
 	}
 
 	render() {
-
+		var divStyle = {display:"block", margin:"auto"};
 		return (
-			<img className="Image" src={this.props.image} />
+			<img className="Image" src={this.props.image} style={divStyle}/>
 		);
 	}
 }
