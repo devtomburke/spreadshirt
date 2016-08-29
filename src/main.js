@@ -34,11 +34,12 @@ const Carousel = React.createClass ({
   	},
 
   	searchHandler(designs, input){
-  		var newPhotos = this.state.photos;
+  		var newPhotos = [];
   		designs.map(function(design, index) {
   			newPhotos.push(design.resources[0].href);
   		});
   		this.setState({photos: newPhotos, input: input});
+  		this.refs.reactSwipe.slide(0,0);
   		if(ratings[input] == null){
   			ratings[input] ={};
   			ratings[input].thumbsup=0;
@@ -47,8 +48,7 @@ const Carousel = React.createClass ({
   	},
 
   	loadNext(index, elem){
-  		this.setState({currentCard: index});
-  		if(index===(limit+this.state.offset-1)){
+  		if(index===(limit-1)){
 			this.setState({offset: this.state.offset+limit});
   		}
   	},
@@ -60,11 +60,13 @@ const Carousel = React.createClass ({
   		}else{
   			ratings[key].thumbsdown++;
   		}
+  		this.refs.reactSwipe.next();
   	},
 
+
+
   	finishRating(){
-  		ReactDOM.render(<Modal ratings={ratings}/>,document.getElementById('modalMount')
-);
+  		ReactDOM.render(<Modal ratings={ratings}/>,document.getElementById('modalMount'));
   	},
 
 
@@ -77,7 +79,7 @@ const Carousel = React.createClass ({
 		}
         return (<div>
 	        		<SearchBox searchHandler={this.searchHandler} key={this.state.photos} offset={this.state.offset} input={this.state.input}/>
-		            <ReactSwipe className="carousel" key={this.state.photos.length} swipeOptions={{continuous: false, startSlide:this.state.currentCard, callback: this.loadNext}}>
+		            <ReactSwipe id="carousel" className="carousel" ref="reactSwipe" key={this.state.photos.length} swipeOptions={{continuous: false, callback: this.loadNext}}>
 		                {::this.cardsCreator()}
 		            </ReactSwipe>
 		            <button id="finishBtn" type="button" onClick={this.finishRating} style={finishBtnStyle}> Finish Rating</button>
