@@ -25,3 +25,8 @@
     npm install
     npm run devserver
 You can reach the devserver at localhost:8080. You need to reload the page after using the mobile device to get swipe to work.
+
+
+### notes
+- I started using react yesterday (sunday, 28th Aug 2016)
+- I unfortunately started doing this with reapp, which is more or less a dead project. This caused further delay in the deployment process
