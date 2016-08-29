@@ -3,7 +3,7 @@
 import React from 'react';
 import CardImage from './CardImage';
 
-export default class GreetingCard extends React.Component {
+export default class Card extends React.Component {
 	constructor(props) {
 		super(props);
 	}
