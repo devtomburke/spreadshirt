@@ -20,3 +20,5 @@
 - the JS design: a state controlling app-class which holds all state and contains the searchbar and the like-dislike overview, while the gallery to rate the designs is in an overlapping gallery
 
 ## how to run:
+    npm install
+    npm run devserver
