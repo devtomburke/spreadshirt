@@ -11,7 +11,7 @@ export default class GreetingCard extends React.Component {
 	render() {
 		return (
 			<div>
-				<CardImage image={this.props.card.image}/>
+				<CardImage image={this.props.image}/>
 			</div>
 		);
 	}
