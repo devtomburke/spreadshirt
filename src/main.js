@@ -12,7 +12,7 @@ import styles from './styles/styles.css';
 const limit = 20;
 const baseURL = "http://api.spreadshirt.net/api/v1/shops/205909/designs?showFacets=false&spellcheck=true&sortOrder=desc&locale=de_DE&mediaType=json&limit="+limit;
 var ratings = {};
-
+const ids =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 const Carousel = React.createClass ({
 
 	getInitialState(){
@@ -78,8 +78,8 @@ const Carousel = React.createClass ({
 		    width: "100%"
 		}
         return (<div>
-	        		<SearchBox searchHandler={this.searchHandler} key={this.state.photos} offset={this.state.offset} input={this.state.input}/>
-		            <ReactSwipe id="carousel" className="carousel" ref="reactSwipe" key={this.state.photos.length} swipeOptions={{continuous: false, callback: this.loadNext}}>
+	        		<SearchBox searchHandler={this.searchHandler} key="a" offset={this.state.offset} input={this.state.input}/>
+		            <ReactSwipe id="carousel" className="carousel" ref="reactSwipe" key={this.state.photos} swipeOptions={{continuous: false, callback: this.loadNext}}>
 		                {::this.cardsCreator()}
 		            </ReactSwipe>
 		            <button id="finishBtn" type="button" onClick={this.finishRating} style={finishBtnStyle}> Finish Rating</button>
